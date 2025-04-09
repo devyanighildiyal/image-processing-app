@@ -25,7 +25,7 @@ filters = [
 # Show dropdown only if image is uploaded
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Original Image", use_column_width=True)
+    st.image(image, caption="Original Image", use_container_width=True)
 
     img_np = np.array(image.convert('RGB'))  # Convert PIL image to numpy array (RGB)
 
@@ -67,4 +67,4 @@ if uploaded_file is not None:
             result = cv2.bitwise_and(color, color, mask=edges)
 
         st.markdown("### Filtered Image:")
-        st.image(result, use_column_width=True, clamp=True)
+        st.image(result, use_container_width=True, clamp=True)
