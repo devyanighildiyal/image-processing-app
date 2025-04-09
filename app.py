@@ -15,7 +15,6 @@ uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
 filters = [
     "Convert to Grayscale",
-    "Resize Image",
     "Rotate Image",
     "Apply Gaussian Blur",
     "Apply Median Blur",
@@ -34,10 +33,7 @@ if uploaded_file:
     selected_filter = st.selectbox("Select a filter to apply", filters)
 
     # Additional inputs for certain filters
-    if selected_filter == "Resize Image":
-        new_width = st.number_input("New Width", min_value=10, max_value=1000, value=img_np.shape[1])
-        new_height = st.number_input("New Height", min_value=10, max_value=1000, value=img_np.shape[0])
-    elif selected_filter == "Rotate Image":
+    if selected_filter == "Rotate Image":
         angle = st.slider("Rotation Angle", -180, 180, 0)
 
     if st.button("Apply Filter"):
@@ -45,9 +41,6 @@ if uploaded_file:
 
         if selected_filter == "Convert to Grayscale":
             result = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
-
-        elif selected_filter == "Resize Image":
-            result = cv2.resize(img_np, (int(new_width), int(new_height)))
 
         elif selected_filter == "Rotate Image":
             (h, w) = img_np.shape[:2]
