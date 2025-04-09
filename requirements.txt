@@ -32,6 +32,8 @@ smmap==5.0.2
 streamlit==1.44.1
 tenacity==9.1.2
 toml==0.10.2
+matplotlib==3.9.0
+
 tornado==6.4.2
 typing_extensions==4.13.1
 tzdata==2025.2
